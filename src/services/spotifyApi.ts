@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import { Spotify } from '../types/spotify.ts';
+import { MAX_LIMIT } from '../types/other.ts';
 
 const API_BASE_URL = 'https://api.spotify.com/v1';
 
@@ -28,10 +29,14 @@ const getAccessToken = async (): Promise<string> => {
     return accessToken;
 };
 
-export const searchSpotify = async (query: string, type: string) => {
+export const searchSpotify = async (params): Promise<Spotify.Search.Response> => {
     await getAccessToken();
     const response = await axiosInstance.get('/search', {
-        params: { q: query, type, limit: 10 },
+        params: {
+            q: params.query,
+            type: params.type,
+            limit: MAX_LIMIT,
+        }
     });
 
     return response.data;
