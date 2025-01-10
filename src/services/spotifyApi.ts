@@ -16,7 +16,7 @@ const getAccessToken = async (): Promise<string> => {
             new URLSearchParams({ grant_type: 'client_credentials' }),
             {
                 headers: {
-                    Authorization: `Basic ${btoa(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`)}`,
+                    Authorization: `Basic ${btoa(`${import.meta.env.VITE_CLIENT_ID}:${import.meta.env.VITE_CLIENT_SECRET}`)}`,
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
             }
