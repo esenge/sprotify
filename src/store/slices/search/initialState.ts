@@ -1,5 +1,5 @@
-import {SpotifySearchType} from '../../../types/spotify.ts';
-import {TYPE_ALL} from '../../../types/other.ts';
+import { SpotifySearchType } from '../../../types/spotify.ts';
+import { TYPE_ALL } from '../../../types/other.ts';
 
 interface I_SearchTypeState {
     searchType: SpotifySearchType | TYPE_ALL;

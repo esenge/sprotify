@@ -2,8 +2,11 @@ import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import FavoritesPage from './pages/FavoritesPage';
+import { useGlobalAuth } from './hooks/useGlobalAuth';
 
 const App: React.FC = () => {
+    useGlobalAuth();
+
     return (
         <div>
             <nav>

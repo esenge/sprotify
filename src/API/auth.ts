@@ -18,8 +18,6 @@ export const getAccessToken = async (): Promise<string> => {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
             }
-
-
         );
         accessToken = response.data.access_token;
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
