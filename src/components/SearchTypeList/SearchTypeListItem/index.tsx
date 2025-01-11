@@ -3,7 +3,7 @@ import { Chip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { SpotifySearchType } from '../../../types/spotify.ts';
-import { setSearchType } from '../../../store/slices/searchSlice.ts';
+import { setSearchType } from '../../../store/slices/search/searchSlice.ts';
 
 interface I_SearchTypeListItem {
     type: SpotifySearchType | 'all',

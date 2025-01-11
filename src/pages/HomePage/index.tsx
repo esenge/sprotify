@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ALL_SPOTIFY_SEARCH_TYPES } from '../../constants.ts';
 import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedString/arrayToCommaSeparatedString.ts';
-import { fetchSearchResults } from '../../store/thunks/searchThunks.ts';
 import SearchResultsGrid from '../../components/SearchResultsGrid';
+import { fetchSearchResults } from '../../store/slices/search/asyncThunks..ts';
 
 const HomePage: React.FC = () => {
     const dispatch = useDispatch();

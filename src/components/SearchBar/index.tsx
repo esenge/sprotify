@@ -1,7 +1,7 @@
 import { InputAdornment, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { setQuery } from '../../store/slices/searchSlice.ts';
+import { setQuery } from '../../store/slices/search/searchSlice.ts';
 
 const SearchBar: React.FC = () => {
     const dispatch = useDispatch();
