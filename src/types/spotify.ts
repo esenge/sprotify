@@ -1,11 +1,12 @@
 export type SpotifySearchType = "album" | "artist" | "playlist" | "track" | "show" | "episode" | "audiobook";
+export type SpotifySavedType = "albums" | "artists" | "playlists" | "tracks" | "shows" | "episodes" | "audiobooks";
 
 export namespace Spotify {
     export interface Image {
         url: string;
     }
     export interface Album {
-        id: number;
+        id: string;
         name: string;
         release_date: string;
         images: Array<Image>;

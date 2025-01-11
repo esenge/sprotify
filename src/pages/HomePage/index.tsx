@@ -12,11 +12,20 @@ import { fetchSearchResults } from '../../store/slices/search/asyncThunks..ts';
 const HomePage: React.FC = () => {
     const dispatch = useDispatch();
     const { searchType, query } = useSelector((state: RootState) => state.search);
+    // const { accessToken } = useSelector((state: RootState) => state.auth);
+
 
     useEffect(() => {
         const type = searchType === 'all' ? arrayToCommaSeparatedString(ALL_SPOTIFY_SEARCH_TYPES, ',') : searchType;
         dispatch(fetchSearchResults({ query, type }));
     }, [searchType, query]);
+
+    // useEffect(() => {
+    //     if (accessToken) {
+    //         dispatch(fetchAlbumsWithFavorites(accessToken));
+    //         console.log("vajag izsaukt favorītus");
+    //     }
+    // }, [accessToken, searchType]);
 
     return (
         <Container>

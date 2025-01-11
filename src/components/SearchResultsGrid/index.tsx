@@ -5,7 +5,11 @@ import List from '../List';
 import AlbumGrid from '../AlbumGrid';
 
 const SearchResultsGrid: React.FC = () => {
-    const {  results } = useSelector((state: RootState) => state.search);
+    const { results } = useSelector((state: RootState) => state.search);
+    const { favoriteAlbumIds } = useSelector((state: RootState) => state.favorites);
+
+    console.log("results", results);
+    console.log("favoriteAlbumIds", favoriteAlbumIds);
 
     const renderContent = (key: string) => {
         switch (key) {

@@ -1,5 +1,11 @@
-import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
+import { ImageList } from '@mui/material';
 import { Spotify } from '../../types/spotify.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { useEffect, useMemo } from 'react';
+import { fetchFavoriteAlbumIds } from '../../store/slices/favorites/asyncThunks.ts';
+import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedString/arrayToCommaSeparatedString.ts';
+import AlbumItem from './AlbumItem';
 
 interface I_AlbumGrid {
     items: Array<Spotify.Album>;
@@ -8,22 +14,32 @@ interface I_AlbumGrid {
 const AlbumGrid: React.FC<I_AlbumGrid> = ({
     items
 }) => {
+    const dispatch = useDispatch();
+    const { favoriteAlbumIds } = useSelector((state: RootState) => state.favorites);
+    const { accessToken } = useSelector((state: RootState) => state.auth);
+    const itemIds = items.map((item) => item.id);
+
+    // todo: move this to item
+    useEffect(() => {
+        const ids = arrayToCommaSeparatedString(itemIds, ',');
+        if (accessToken) {
+            dispatch(fetchFavoriteAlbumIds({accessToken, type: 'albums', ids}));
+        }
+    }, [accessToken]);
+
+    const albumsToShow = useMemo(() => {
+        return favoriteAlbumIds
+        ? items.map((item, index) => ({
+                ...item,
+                isFavorite: favoriteAlbumIds[index],
+            }))
+        : items
+    }, [favoriteAlbumIds, items]);
+
     return (
-        <ImageList cols={4}>
-            {items.map((item) => (
-                <ImageListItem key={item.id}>
-                    <img
-                        srcSet={item.images[0].url}
-                        src={item.images[0].url}
-                        alt={item.name}
-                        loading="lazy"
-                    />
-                    <ImageListItemBar
-                        title={item.name}
-                        subtitle={item.release_date}
-                        position="below"
-                    />
-                </ImageListItem>
+        <ImageList cols={5}>
+            {albumsToShow?.map((item) => (
+                <AlbumItem item={item} />
             ))}
         </ImageList>
     );

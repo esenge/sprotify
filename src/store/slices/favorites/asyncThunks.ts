@@ -1,17 +1,33 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosInstance } from '../../../API/auth.ts';
+import spotifyAPI from '../../../API/spotifyAPI.ts';
 
 export const fetchSavedAlbums = createAsyncThunk(
     'favorites/fetchSavedAlbums',
-    async (accessToken: string, { rejectWithValue }) => {
-        console.log("fetchSavedAlbums");
+    async (params, { rejectWithValue }) => {
         try {
-            axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-            const response = await axiosInstance.get('/me/albums');
-            return response.data.items;
+            return await spotifyAPI.savedItems(params);
         } catch (error: any) {
-            console.error('Error fetching saved albums:', error);
-            return rejectWithValue(error.response?.data || 'Failed to fetch saved albums');
         }
     }
 );
+
+export const fetchFavoriteAlbumIds = createAsyncThunk(
+    'favorites/fetchFavoriteAlbumIds',
+    async (params, { rejectWithValue }) => {
+        try {
+            return await spotifyAPI.favorites(params);
+        } catch (error: any) {
+        }
+    }
+);
+
+export const saveFavoriteAlbum = createAsyncThunk(
+    'favorites/saveFavoriteAlbum',
+    async (params, { rejectWithValue }) => {
+        try {
+            return await spotifyAPI.addFavorite(params);
+        } catch (error: any) {
+        }
+    }
+);
+

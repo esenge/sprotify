@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { useEffect } from 'react';
-import { fetchSavedAlbums } from '../../store/slices/favorites/asyncThunks.ts';
+import {fetchAlbumsWithFavorites, fetchSavedAlbums} from '../../store/slices/favorites/asyncThunks.ts';
 import { Button } from '@mui/material';
 import { LOGIN_URL } from '../../API/authConfig.ts';
 
@@ -17,7 +17,9 @@ const FavoritesPage: React.FC = () => {
 
     useEffect(() => {
         if (accessToken) {
-            dispatch(fetchSavedAlbums(accessToken));
+            dispatch(fetchSavedAlbums({ accessToken, type: 'albums' }));
+            // dispatch(fetchAlbumsWithFavorites(accessToken));
+
         }
     }, [accessToken]);
 
@@ -29,7 +31,10 @@ const FavoritesPage: React.FC = () => {
             {accessToken && (
                 <ul>
                     {albums.map((album: any) => (
-                        <li key={album.album.id}>{album.album.name}</li>
+                        <li key={album.album.id}>
+                            {album.album.name}
+                            {album.isFavorite && <p className="favorite-badge">My Favorite</p>}
+                        </li>
                     ))}
                 </ul>
             )}
