@@ -26,7 +26,9 @@ const favoritesSlice = createSlice({
                     state.favorites[action.payload.type] = action.payload.data;
                     break;
                 case saveFavorite.fulfilled.type:
-                    state.favoriteAlbumIds = action.payload;
+                    console.log("action", action);
+                    // state.favoriteAlbumIds = action.payload;
+                    state.favorites[action.payload.type];
                     break;
                 case removeFavorite.fulfilled.type:
                     state.favoriteAlbumIds = action.payload;

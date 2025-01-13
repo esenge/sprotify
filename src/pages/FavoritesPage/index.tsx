@@ -76,8 +76,8 @@ const FavoritesPage: React.FC = () => {
             )}
             {value === 'tracks' && (
                 <TrackGrid
-                    items={albums?.map((item) => ({
-                        ...item.album,
+                    items={tracks?.map((item) => ({
+                        ...item.track,
                         isFavorite: true,
                     }))}
                 />

@@ -12,7 +12,7 @@ const AlbumGrid: React.FC<I_AlbumGrid> = ({
     return (
         <ImageList cols={5}>
             {items?.map((item) => (
-                <AlbumItem item={item} />
+                <AlbumItem item={item} key={item.id} />
             ))}
         </ImageList>
     );

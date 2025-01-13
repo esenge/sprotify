@@ -2,7 +2,7 @@ import {Box, Grid2, Typography} from '@mui/material';
 
 const NoResults: React.FC = () => {
     return (
-        <Grid2 item size={12}>
+        <Grid2 size={12}>
             <Box
                 sx={{
                     display: 'flex',

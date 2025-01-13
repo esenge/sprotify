@@ -17,6 +17,7 @@ export const fetchFavoriteIds = createAsyncThunk(
     'favorites/fetchFavoriteIds',
     async (params: I_Favorites, { rejectWithValue }) => {
         try {
+            console.log("params", params);
             const response = await spotifyAPI.favorites(params);
             return { data: response, type: params.type };
         } catch (error: any) {
@@ -28,7 +29,8 @@ export const saveFavorite = createAsyncThunk(
     'favorites/saveFavorite',
     async (params: I_ModifyFavorite, { rejectWithValue }) => {
         try {
-            return await spotifyAPI.addFavorite(params);
+            const response = await spotifyAPI.addFavorite(params);
+            return { data: response, type: params.type};
         } catch (error: any) {
             if (error.response?.status === 401) {
                 return rejectWithValue({ code: 401, message: 'Unauthorized' });
@@ -42,7 +44,8 @@ export const removeFavorite = createAsyncThunk(
     'favorites/removeFavorite',
     async (params: I_ModifyFavorite, { rejectWithValue }) => {
         try {
-            return await spotifyAPI.removeFavorite(params);
+            const response = await spotifyAPI.removeFavorite(params);
+            return { data: response, type: params.type};
         } catch (error: any) {
             if (error.response?.status === 401) {
                 return rejectWithValue({ code: 401, message: 'Unauthorized' });

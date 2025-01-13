@@ -9,8 +9,8 @@ const SearchResultsGrid: React.FC = () => {
     return (
         <Grid2 size={12}>
             {results ? Object.keys(results).map((key) => (
-                <div>
-                    <GenericGrid items={results[key]?.items} isFavorite={true} type={key} />
+                <div key={key}>
+                    <GenericGrid items={results[key]?.items} type={key} />
                 </div>
             )): <NoResults />}
         </Grid2>

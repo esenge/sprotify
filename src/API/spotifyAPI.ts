@@ -1,6 +1,6 @@
-import { Spotify, SpotifySavedType } from '../types/spotify';
+import { Spotify } from '../types/spotify';
 import { axiosInstance, getAccessToken } from './auth';
-import {I_Favorites, I_ModifyFavorite, I_SavedItems, MAX_LIMIT} from '../types/other';
+import { I_Favorites, I_ModifyFavorite, I_SavedItems, MAX_LIMIT } from '../types/other';
 
 const spotifyAPI = {
     search: async (params: Spotify.Search.Params): Promise<Spotify.Search.Response> => {

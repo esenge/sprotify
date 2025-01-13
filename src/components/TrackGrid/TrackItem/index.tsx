@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store';
 import { useState } from 'react';
 import LoginModal from '../../Login/LoginModal';
+import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor.ts';
 
 interface I_TrackItem {
     item: any;
@@ -48,8 +49,8 @@ const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
                     <Box>
                         <IconButton
                             aria-label="add to favorites"
-                            color={item.isFavorite ? 'error' : 'default'}
-                            onClick={() => handleFavorite(item)}
+                            color={iconButtonColor(item.isFavorite)}
+                            onClick={handleFavorite}
                         >
                             <Favorite sx={{height: 24, width: 24}} />
                         </IconButton>
