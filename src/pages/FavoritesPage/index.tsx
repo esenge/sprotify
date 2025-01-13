@@ -68,18 +68,22 @@ const FavoritesPage: React.FC = () => {
             </Box>
             {value === 'albums' && (
                 <AlbumGrid
-                    items={albums?.map((item) => ({
-                        ...item.album,
-                        isFavorite: true,
-                    }))}
+                    items={albums
+                        ?.filter((item) => item?.album)
+                        .map((item) => ({
+                            ...item.album,
+                            isFavorite: true,
+                        }))}
                 />
             )}
             {value === 'tracks' && (
                 <TrackGrid
-                    items={tracks?.map((item) => ({
-                        ...item.track,
-                        isFavorite: true,
-                    }))}
+                    items={tracks
+                        ?.filter((item) => item?.track)
+                        .map((item) => ({
+                            ...item.track,
+                            isFavorite: true,
+                        }))}
                 />
             )}
         </Grid2>
