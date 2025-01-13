@@ -18,7 +18,6 @@ export const fetchFavoriteIds = createAsyncThunk(
     'favorites/fetchFavoriteIds',
     async (params: I_Favorites, { rejectWithValue }) => {
         try {
-            console.log("params", params);
             const response = await spotifyAPI.favorites(params);
             return { data: response, type: params.type };
         } catch (error: any) {

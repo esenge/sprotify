@@ -24,9 +24,9 @@ const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
             return;
         }
         if (item.isFavorite) {
-            dispatch(removeFavorite({accessToken, type: 'albums', ids: item.id}))
+            dispatch(removeFavorite({accessToken, type: 'tracks', ids: item.id}))
         } else {
-            dispatch(saveFavorite({accessToken, type: 'albums', ids: item.id}))
+            dispatch(saveFavorite({accessToken, type: 'tracks', ids: item.id}))
         }
     };
 

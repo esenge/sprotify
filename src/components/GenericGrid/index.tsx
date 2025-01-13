@@ -16,7 +16,7 @@ const GenericGrid: React.FC<I_GenericGrid> = ({
     type,
 }) => {
     const dispatch = useDispatch<AppDispatch>();
-    const { favorites } = useSelector((state: RootState) => state.favorites);
+    const { favorites, shouldReload } = useSelector((state: RootState) => state.favorites);
     const { accessToken } = useSelector((state: RootState) => state.auth);
     const itemIds = items.map((item) => item.id);
 
@@ -34,7 +34,8 @@ const GenericGrid: React.FC<I_GenericGrid> = ({
         if (accessToken) {
             dispatch(fetchFavoriteIds({accessToken, type, ids}));
         }
-    }, [accessToken, items]);
+    }, [accessToken, shouldReload]);
+
 
     const renderGrid = () => {
         switch (type) {

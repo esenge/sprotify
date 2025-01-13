@@ -1,4 +1,4 @@
-import { createSlice, isPending, isFulfilled, isRejected } from '@reduxjs/toolkit';
+import {createSlice, isPending, isFulfilled, isRejected, PayloadAction} from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import {
     fetchFavoriteIds,
@@ -10,7 +10,11 @@ import {
 const favoritesSlice = createSlice({
     name: 'favorites',
     initialState,
-    reducers: {},
+    reducers: {
+        setShouldReload(state, action: PayloadAction<boolean>) {
+            state.shouldReload = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addMatcher(isPending(fetchFavoriteIds, fetchSavedItems, saveFavorite, removeFavorite), (state) => {
             state.loading = true;
@@ -20,18 +24,21 @@ const favoritesSlice = createSlice({
             state.loading = false;
             switch (action.type) {
                 case fetchSavedItems.fulfilled.type:
+                    state.shouldReload = false;
                     state[action.payload.type] = action.payload.data;
                     break;
                 case fetchFavoriteIds.fulfilled.type:
                     state.favorites[action.payload.type] = action.payload.data;
+                    state.shouldReload = false;
                     break;
                 case saveFavorite.fulfilled.type:
                     console.log("action", action);
+                    state.shouldReload = true;
                     // state.favoriteAlbumIds = action.payload;
-                    state.favorites[action.payload.type];
                     break;
                 case removeFavorite.fulfilled.type:
-                    state.favoriteAlbumIds = action.payload;
+                    state.shouldReload = true;
+                    // state.favoriteAlbumIds = action.payload;
                     break;
                 default:
                     break;
@@ -54,5 +61,7 @@ const favoritesSlice = createSlice({
         });
     },
 });
-
+export const {
+    setShouldReload
+} = favoritesSlice.actions;
 export default favoritesSlice.reducer;

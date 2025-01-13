@@ -9,7 +9,7 @@ import TrackGrid from '../../components/TrackGrid';
 
 const FavoritesPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { albums, tracks } = useSelector((state: RootState) => state.favorites);
+    const { albums, tracks, shouldReload } = useSelector((state: RootState) => state.favorites);
     const { accessToken } = useSelector((state: RootState) => state.auth);
     const [value, setValue] = useState('albums');
 
@@ -17,7 +17,7 @@ const FavoritesPage: React.FC = () => {
         if (accessToken) {
             dispatch(fetchSavedItems({ accessToken, type: value }));
         }
-    }, [accessToken, value]);
+    }, [accessToken, value, shouldReload]);
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
