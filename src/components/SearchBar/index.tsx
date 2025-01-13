@@ -1,11 +1,10 @@
 import { InputAdornment, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { setQuery } from '../../store/slices/search/searchSlice';
-import {AppDispatch} from '../../store';
+import { setQuery } from '../../store/slices/search/searchSlice.ts';
 
 const SearchBar: React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useDispatch();
 
     const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQuery(e.target.value));
@@ -25,6 +24,7 @@ const SearchBar: React.FC = () => {
             }}
             variant="outlined"
             onChange={handleSearch}
+            fullWidth={true}
         />
     );
 };

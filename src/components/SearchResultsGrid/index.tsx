@@ -1,40 +1,18 @@
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
-import {Grid2, Typography} from '@mui/material';
-import AlbumGrid from '../AlbumGrid';
-import TrackGrid from '../TrackGrid';
+import {Grid2} from '@mui/material';
+import GenericGrid from '../GenericGrid';
+import NoResults from '../NoResults';
 
 const SearchResultsGrid: React.FC = () => {
     const { results } = useSelector((state: RootState) => state.search);
-    const { favoriteAlbumIds } = useSelector((state: RootState) => state.favorites);
-
-    console.log("results", results);
-    console.log("favoriteAlbumIds", favoriteAlbumIds);
-
-    const renderContent = (key: string) => {
-        switch (key) {
-            case 'albums':
-                return <AlbumGrid items={results[key]?.items} />
-            // case 'artists':
-            // case 'audiobooks':
-            // case 'episodes':
-            // case 'playlists':
-            // case 'shows':
-            case 'tracks':
-                return <TrackGrid items={results[key]?.items} />
-        }
-    }
-
     return (
         <Grid2 size={12}>
             {results ? Object.keys(results).map((key) => (
                 <div>
-                    <Typography variant="h5">
-                        {key}
-                    </Typography>
-                    { renderContent(key) }
+                    <GenericGrid items={results[key]?.items} isFavorite={true} type={key} />
                 </div>
-            )): <div>No results</div>}
+            )): <NoResults />}
         </Grid2>
     );
 };

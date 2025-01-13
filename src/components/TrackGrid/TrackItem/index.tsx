@@ -1,59 +1,63 @@
-import {Card, CardContent, Typography} from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import CardMedia from '@mui/material/CardMedia';
-import * as React from 'react';
-import {Favorite, PlayArrow} from '@mui/icons-material';
+import { Favorite } from '@mui/icons-material';
+import { removeFavorite, saveFavorite } from '../../../store/slices/favorites/asyncThunks.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../store';
+import { useState } from 'react';
+import LoginModal from '../../Login/LoginModal';
 
-interface Props {
+interface I_TrackItem {
     item: any;
 }
 
-const TrackItem: React.FC<Props> = ({ item }) => {
-    const handleFavorite = (item: any) => {
+const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
+    const dispatch = useDispatch<AppDispatch>();
+    const { accessToken } = useSelector((state: RootState) => state.auth);
+    const [showLoginModal, setShowModal] = useState<boolean>(false);
 
+    const handleFavorite = () => {
+        if (!accessToken) {
+            setShowModal(true);
+            return;
+        }
+        if (item.isFavorite) {
+            dispatch(removeFavorite({accessToken, type: 'albums', ids: item.id}))
+        } else {
+            dispatch(saveFavorite({accessToken, type: 'albums', ids: item.id}))
+        }
     };
 
     return (
-        <Card sx={{ display: 'flex' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flex: '1 0 auto' }}>
-                    <Typography component="div" variant="h6">
-                        {item.name}
-                    </Typography>
-                    <Typography
-                        variant="subtitle1"
-                        component="div"
-                        sx={{ color: 'text.secondary' }}
-                    >
-                        {item?.artists?.map((item) => item.name).join(', ')}
-                    </Typography>
+        <>
+            <Card>
+                <CardContent sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <Box>
+                        <Typography component="div" variant="h6">
+                            {item.name}
+                        </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            component="div"
+                            sx={{ color: 'text.secondary' }}
+                        >
+                            {item?.artists?.map((item) => item.name).join(', ')}
+                        </Typography>
+                    </Box>
+                    <Box>
+                        <IconButton
+                            aria-label="add to favorites"
+                            color={item.isFavorite ? 'error' : 'default'}
+                            onClick={() => handleFavorite(item)}
+                        >
+                            <Favorite sx={{height: 24, width: 24}} />
+                        </IconButton>
+                    </Box>
                 </CardContent>
-                <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                    {item.is_playable
-                        && (
-                            <IconButton aria-label="play/pause">
-                                <PlayArrow sx={{height: 24, width: 24}} />
-                            </IconButton>
-                        )
-                    }
-                    <IconButton
-                        aria-label="add to favorites"
-                        color={item.isFavorite ? 'error' : 'default'}
-                        onClick={() => handleFavorite(item)}
-                    >
-                        <Favorite sx={{height: 24, width: 24}} />
-                    </IconButton>
-                </Box>
-            </Box>
-            <CardMedia
-                component="img"
-                sx={{ width: 150 }}
-                image={item.album.images[0].url}
-                alt={item.album.images[0].alt}
-            />
-        </Card>
-
+            </Card>
+            {showLoginModal && <LoginModal />}
+        </>
     );
 };
 

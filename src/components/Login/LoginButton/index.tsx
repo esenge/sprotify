@@ -7,7 +7,7 @@ const LoginButton: React.FC = () => {
     };
 
     return (
-        <Button variant="contained" onClick={handleLogin}>
+        <Button variant="contained" color="secondary" onClick={handleLogin}>
             Log In
         </Button>
     )

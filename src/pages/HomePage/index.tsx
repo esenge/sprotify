@@ -1,9 +1,9 @@
 import SearchBar from '../../components/SearchBar';
 import { useEffect } from 'react';
-import { Container, Grid2 } from '@mui/material';
+import { Grid2, Typography, Box } from '@mui/material';
 import SearchTypeList from '../../components/SearchTypeList';
 import { useDispatch, useSelector } from 'react-redux';
-import {AppDispatch, RootState} from '../../store';
+import { AppDispatch, RootState } from '../../store';
 import SearchResultsGrid from '../../components/SearchResultsGrid';
 import { fetchSearchResults } from '../../store/slices/search/asyncThunks';
 
@@ -12,26 +12,24 @@ const HomePage: React.FC = () => {
     const { searchType, query } = useSelector((state: RootState) => state.search);
 
     useEffect(() => {
-        dispatch(fetchSearchResults({ query, type: searchType }));
-    }, [searchType, query]);
+        if (query) {
+            dispatch(fetchSearchResults({ query, type: searchType }));
+        }
+    }, [searchType, query, dispatch]);
 
     return (
-        <Container>
-            <Grid2 container spacing={2}>
-                <Grid2 size={12}>
-                    <h1>Šprotify</h1>
-                </Grid2>
-                <Grid2 size={12}>
-                    <SearchBar />
-                </Grid2>
-                <Grid2 size={12}>
-                    <SearchTypeList />
-                </Grid2>
-                <Grid2 size={12}>
-                    <SearchResultsGrid />
-                </Grid2>
+        <Grid2 container size={12} spacing={3}>
+            <Grid2 container size={12} justifyContent="center">
+                <Typography variant="h5">
+                    Discover and explore your favorite tracks, albums, and artists.
+                </Typography>
             </Grid2>
-        </Container>
+            <Grid2 container size={12} spacing={3} justifyContent="center">
+                <SearchBar />
+                <SearchTypeList />
+                <SearchResultsGrid />
+            </Grid2>
+        </Grid2>
     );
 };
 

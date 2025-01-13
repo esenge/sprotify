@@ -26,7 +26,7 @@ const SearchTypeListItem: React.FC<I_SearchTypeListItem> = ({
             variant={searchType === type ? 'filled' : 'outlined' as 'filled' | 'outlined'}
             onClick={handleClick}
             className={style.SearchTypeItem}
-            color="success"
+            color="secondary"
         />
     )
 };

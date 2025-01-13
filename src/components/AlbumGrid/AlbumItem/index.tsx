@@ -17,13 +17,12 @@ const AlbumItem: React.FC<I_AlbumItem> = ({
     const dispatch = useDispatch<AppDispatch>();
     const { accessToken } = useSelector((state: RootState) => state.auth);
     const [showLoginModal, setShowModal] = useState<boolean>(false);
+
     const handleFavorite = () => {
         if (!accessToken) {
-            console.log("JĀRĀDA MODĀLAIS");
             setShowModal(true);
             return;
         }
-        // todo: try to move to toogle service.
         if (item.isFavorite) {
             dispatch(removeFavorite({accessToken, type: 'albums', ids: item.id}))
         } else {

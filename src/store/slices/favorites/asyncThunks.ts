@@ -2,21 +2,23 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import spotifyAPI from '../../../API/spotifyAPI';
 import {I_Favorites, I_ModifyFavorite, I_SavedItems} from '../../../types/other';
 
-export const fetchSavedAlbums = createAsyncThunk(
-    'favorites/fetchSavedAlbums',
+export const fetchSavedItems = createAsyncThunk(
+    'favorites/fetchSavedItems',
     async (params: I_SavedItems, { rejectWithValue }) => {
         try {
-            return await spotifyAPI.savedItems(params);
+            const response = await spotifyAPI.savedItems(params);
+            return { data: response, type: params.type };
         } catch (error: any) {
         }
     }
 );
 
-export const fetchFavoriteAlbumIds = createAsyncThunk(
-    'favorites/fetchFavoriteAlbumIds',
+export const fetchFavoriteIds = createAsyncThunk(
+    'favorites/fetchFavoriteIds',
     async (params: I_Favorites, { rejectWithValue }) => {
         try {
-            return await spotifyAPI.favorites(params);
+            const response = await spotifyAPI.favorites(params);
+            return { data: response, type: params.type };
         } catch (error: any) {
         }
     }

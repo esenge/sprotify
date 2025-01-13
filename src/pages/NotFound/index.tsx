@@ -9,10 +9,7 @@ const NotFound: React.FC = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: '100vh',
                 textAlign: 'center',
-                backgroundColor: '#f7f7f7',
-                padding: 4,
             }}
         >
             <img
@@ -28,7 +25,7 @@ const NotFound: React.FC = () => {
             </Typography>
             <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 size="large"
                 component={Link}
                 to="/"

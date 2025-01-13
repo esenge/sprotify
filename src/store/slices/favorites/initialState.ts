@@ -5,6 +5,7 @@ interface I_FavoritesState {
     loading: boolean;
     error: string | null;
     loginModalVisible: boolean;
+    favorites: any;
 }
 
 export const initialState: I_FavoritesState = {
@@ -14,4 +15,8 @@ export const initialState: I_FavoritesState = {
     loading: false,
     error: null,
     loginModalVisible: false,
+    favorites: {
+        albums: [],
+        tracks: [],
+    },
 };
