@@ -9,14 +9,10 @@ interface Props {
     item: any;
 }
 
-const ListItem: React.FC<Props> = ({ item }) => {
+const TrackItem: React.FC<Props> = ({ item }) => {
     const handleFavorite = (item: any) => {
-        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-        localStorage.setItem('favorites', JSON.stringify([...favorites, item]));
-        alert(`${item.name} added to favorites!`);
-    };
 
-    const isFavorited = true;
+    };
 
     return (
         <Card sx={{ display: 'flex' }}>
@@ -43,7 +39,7 @@ const ListItem: React.FC<Props> = ({ item }) => {
                     }
                     <IconButton
                         aria-label="add to favorites"
-                        color={isFavorited ? 'error' : 'default'}
+                        color={item.isFavorite ? 'error' : 'default'}
                         onClick={() => handleFavorite(item)}
                     >
                         <Favorite sx={{height: 24, width: 24}} />
@@ -61,4 +57,4 @@ const ListItem: React.FC<Props> = ({ item }) => {
     );
 };
 
-export default ListItem;
+export default TrackItem;

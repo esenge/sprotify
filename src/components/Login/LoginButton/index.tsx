@@ -1,0 +1,16 @@
+import { Button } from '@mui/material';
+import { LOGIN_URL } from '../../../API/authConfig.ts';
+
+const LoginButton: React.FC = () => {
+    const handleLogin = () => {
+        window.location.href = LOGIN_URL;
+    };
+
+    return (
+        <Button variant="contained" onClick={handleLogin}>
+            Log In
+        </Button>
+    )
+};
+
+export default LoginButton;

@@ -1,10 +1,10 @@
 import { ImageList } from '@mui/material';
-import { Spotify } from '../../types/spotify.ts';
+import { Spotify } from '../../types/spotify';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import {AppDispatch, RootState} from '../../store';
 import { useEffect, useMemo } from 'react';
-import { fetchFavoriteAlbumIds } from '../../store/slices/favorites/asyncThunks.ts';
-import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedString/arrayToCommaSeparatedString.ts';
+import { fetchFavoriteAlbumIds } from '../../store/slices/favorites/asyncThunks';
+import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedString/arrayToCommaSeparatedString';
 import AlbumItem from './AlbumItem';
 
 interface I_AlbumGrid {
@@ -14,7 +14,7 @@ interface I_AlbumGrid {
 const AlbumGrid: React.FC<I_AlbumGrid> = ({
     items
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const { favoriteAlbumIds } = useSelector((state: RootState) => state.favorites);
     const { accessToken } = useSelector((state: RootState) => state.auth);
     const itemIds = items.map((item) => item.id);

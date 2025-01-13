@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Spotify } from '../../../types/spotify.ts';
-import { search } from '../../../API/search.ts';
-import spotifyAPI from '../../../API/spotifyAPI.ts';
+import { Spotify } from '../../../types/spotify';
+import spotifyAPI from '../../../API/spotifyAPI';
 
 export const fetchSearchResults = createAsyncThunk(
     'search/fetchSearchResults',

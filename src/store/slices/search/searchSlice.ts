@@ -1,18 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { initialState } from './initialState.ts';
-import { fetchSearchResults } from './asyncThunks..ts';
+import { initialState } from './initialState';
+import { fetchSearchResults } from './asyncThunks';
+import {SpotifySearchType} from '../../../types/spotify';
 
 const searchSlice = createSlice({
     name: 'search',
     initialState,
     reducers: {
         setSearchType(state, action: PayloadAction<string>) {
-            state.searchType = action.payload;
-            state.currentPage = 1;
+            state.searchType = action.payload as SpotifySearchType;
         },
         setQuery(state, action: PayloadAction<string>) {
             state.query = action.payload;
-            state.currentPage = 1;
         },
     },
     extraReducers: (builder) => {

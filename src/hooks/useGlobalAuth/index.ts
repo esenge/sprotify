@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { clearAccessToken, setAccessToken } from '../../store/slices/auth/authSlice.ts';
+import { clearAccessToken, setAccessToken } from '../../store/slices/auth/authSlice';
+import {AppDispatch} from '../../store';
 
 export const useGlobalAuth = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
         // Check if token is valid in localStorage

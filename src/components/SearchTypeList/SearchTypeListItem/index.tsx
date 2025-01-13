@@ -1,18 +1,18 @@
 import style from '../SearchTypeList.module.scss';
 import { Chip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store';
-import { SpotifySearchType } from '../../../types/spotify.ts';
-import { setSearchType } from '../../../store/slices/search/searchSlice.ts';
+import {AppDispatch, RootState} from '../../../store';
+import { SpotifySearchType } from '../../../types/spotify';
+import { setSearchType } from '../../../store/slices/search/searchSlice';
 
 interface I_SearchTypeListItem {
-    type: SpotifySearchType | 'all',
+    type: SpotifySearchType,
 }
 
 const SearchTypeListItem: React.FC<I_SearchTypeListItem> = ({
     type,
 }) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const { searchType } = useSelector((state: RootState) => state.search);
 

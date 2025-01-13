@@ -4,6 +4,7 @@ interface I_FavoritesState {
     artists: any[];
     loading: boolean;
     error: string | null;
+    loginModalVisible: boolean;
 }
 
 export const initialState: I_FavoritesState = {
@@ -12,4 +13,5 @@ export const initialState: I_FavoritesState = {
     artists: [],
     loading: false,
     error: null,
+    loginModalVisible: false,
 };

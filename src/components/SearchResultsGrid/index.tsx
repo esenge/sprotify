@@ -1,8 +1,8 @@
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 import {Grid2, Typography} from '@mui/material';
-import List from '../List';
 import AlbumGrid from '../AlbumGrid';
+import TrackGrid from '../TrackGrid';
 
 const SearchResultsGrid: React.FC = () => {
     const { results } = useSelector((state: RootState) => state.search);
@@ -21,7 +21,7 @@ const SearchResultsGrid: React.FC = () => {
             // case 'playlists':
             // case 'shows':
             case 'tracks':
-                return <List items={results[key]?.items} />
+                return <TrackGrid items={results[key]?.items} />
         }
     }
 

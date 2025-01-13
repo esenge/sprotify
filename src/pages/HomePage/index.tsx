@@ -3,35 +3,23 @@ import { useEffect } from 'react';
 import { Container, Grid2 } from '@mui/material';
 import SearchTypeList from '../../components/SearchTypeList';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { ALL_SPOTIFY_SEARCH_TYPES } from '../../constants.ts';
-import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedString/arrayToCommaSeparatedString.ts';
+import {AppDispatch, RootState} from '../../store';
 import SearchResultsGrid from '../../components/SearchResultsGrid';
-import { fetchSearchResults } from '../../store/slices/search/asyncThunks..ts';
+import { fetchSearchResults } from '../../store/slices/search/asyncThunks';
 
 const HomePage: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const { searchType, query } = useSelector((state: RootState) => state.search);
-    // const { accessToken } = useSelector((state: RootState) => state.auth);
-
 
     useEffect(() => {
-        const type = searchType === 'all' ? arrayToCommaSeparatedString(ALL_SPOTIFY_SEARCH_TYPES, ',') : searchType;
-        dispatch(fetchSearchResults({ query, type }));
+        dispatch(fetchSearchResults({ query, type: searchType }));
     }, [searchType, query]);
-
-    // useEffect(() => {
-    //     if (accessToken) {
-    //         dispatch(fetchAlbumsWithFavorites(accessToken));
-    //         console.log("vajag izsaukt favorītus");
-    //     }
-    // }, [accessToken, searchType]);
 
     return (
         <Container>
             <Grid2 container spacing={2}>
                 <Grid2 size={12}>
-                    <h1>Spotify Search</h1>
+                    <h1>Šprotify</h1>
                 </Grid2>
                 <Grid2 size={12}>
                     <SearchBar />

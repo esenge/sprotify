@@ -1,14 +1,17 @@
-import { SpotifySearchType } from '../../../types/spotify.ts';
-import { TYPE_ALL } from '../../../types/other.ts';
+import { SpotifySearchType } from '../../../types/spotify';
 
 interface I_SearchTypeState {
-    searchType: SpotifySearchType | TYPE_ALL;
+    searchType: SpotifySearchType;
     query: string,
     results: any,
+    isLoading: boolean;
+    error: string | null;
 }
 
 export const initialState: I_SearchTypeState = {
-    searchType: TYPE_ALL,
+    searchType: 'album',
     query: '',
     results: null,
+    isLoading: false,
+    error: null,
 };
