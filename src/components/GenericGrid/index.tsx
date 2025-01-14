@@ -5,10 +5,11 @@ import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedStri
 import {fetchFavoriteIds} from '../../store/slices/favorites/asyncThunks';
 import TrackGrid from '../TrackGrid';
 import AlbumGrid from '../AlbumGrid';
-import {SpotifySavedType} from '../../types/spotify';
+import {Spotify, SpotifySavedType} from '../../types/spotify';
+import {I_Favorites} from '../../store/slices/favorites/initialState';
 
 interface I_GenericGrid {
-    items: any[];
+    items: Array<Spotify.Album> | Array<Spotify.Track>;
     type: string;
 }
 
@@ -22,13 +23,16 @@ const GenericGrid: React.FC<I_GenericGrid> = ({
     const itemIds = items.map((item) => item.id);
 
     const itemsToShow = useMemo(() => {
-        return favorites[type]
-            ? items.map((item, index) => ({
+        const favoritesOfType = favorites[type as keyof I_Favorites];
+        if (favoritesOfType) {
+            return items.map((item, index) => ({
                 ...item,
-                isFavorite: favorites[type][index],
-            }))
-            : items
-    }, [favorites, items]);
+                isFavorite: favoritesOfType[index] ?? false,
+            }));
+        }
+        return items;
+    }, [favorites, items, type]);
+
 
     useEffect(() => {
         const ids = arrayToCommaSeparatedString(itemIds, ',');
@@ -41,9 +45,9 @@ const GenericGrid: React.FC<I_GenericGrid> = ({
     const renderGrid = () => {
         switch (type) {
             case 'tracks':
-                return <TrackGrid items={itemsToShow} />;
+                return <TrackGrid items={itemsToShow as Array<Spotify.Track>} />;
             case 'albums':
-                return <AlbumGrid items={itemsToShow} />
+                return <AlbumGrid items={itemsToShow as Array<Spotify.Album>} />
         }
     };
 

@@ -1,11 +1,12 @@
 import { Box, Grid2 } from '@mui/material';
 import TrackItem from './TrackItem';
+import {Spotify} from '../../types/spotify';
 
-interface Props {
-    items: any[];
+interface I_TrackGrid {
+    items: Array<Spotify.Track>;
 }
 
-const TrackGrid: React.FC<Props> = ({ items }) => {
+const TrackGrid: React.FC<I_TrackGrid> = ({ items }) => {
     return (
         <Box>
             <Grid2 container spacing={2}>

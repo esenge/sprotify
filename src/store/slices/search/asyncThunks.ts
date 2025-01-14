@@ -5,11 +5,9 @@ import spotifyAPI from '../../../API/spotifyAPI';
 //@ts-ignore
 export const fetchSearchResults = createAsyncThunk(
     'search/fetchSearchResults',
-    async (params: Spotify.Search.Params, thunkAPI): Promise<any[]> => {
+    async (params: Spotify.Search.Params, thunkAPI): Promise<Spotify.Search.Response> => {
         try {
-            //@ts-ignore
             return await spotifyAPI.search(params);
-            // return await search(params);
         } catch (error) {
             //@ts-ignore
             return thunkAPI.rejectWithValue('Failed to fetch results');

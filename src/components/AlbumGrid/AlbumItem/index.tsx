@@ -1,15 +1,16 @@
-import {ImageListItem, ImageListItemBar} from '@mui/material';
+import { ImageListItem, ImageListItemBar } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import {Favorite} from '@mui/icons-material';
-import {useDispatch, useSelector} from 'react-redux';
-import {removeFavorite, saveFavorite} from '../../../store/slices/favorites/asyncThunks';
-import {AppDispatch, RootState} from '../../../store';
-import { useState} from 'react';
+import { Favorite } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFavorite, saveFavorite } from '../../../store/slices/favorites/asyncThunks';
+import { AppDispatch, RootState } from '../../../store';
+import { useState } from 'react';
 import LoginModal from '../../Login/LoginModal';
 import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor';
+import { I_SpotifyAlbumItem } from '../../../types/other';
 
 interface I_AlbumItem {
-    item: any;
+    item: I_SpotifyAlbumItem;
 }
 
 const AlbumItem: React.FC<I_AlbumItem> = ({
@@ -47,7 +48,7 @@ const AlbumItem: React.FC<I_AlbumItem> = ({
                     actionIcon={
                         <IconButton
                             aria-label="add to favorites"
-                            color={iconButtonColor(item.isFavorite)}
+                            color={iconButtonColor(!!item.isFavorite)}
                             onClick={handleFavorite}
                         >
                             <Favorite sx={{height: 24, width: 24}} />

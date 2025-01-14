@@ -11,6 +11,14 @@ export namespace Spotify {
         release_date: string;
         images: Array<Image>;
     }
+    export interface Artist {
+        name: string;
+    }
+    export interface Track {
+        id: string;
+        name: string;
+        artists: Array<Artist>;
+    }
     export namespace Search {
         export interface Params {
             query: string;
@@ -21,13 +29,7 @@ export namespace Spotify {
                 message: string;
                 status: number;
             }
-            albums?: Array<Album>;
-            artists?: any;
-            audiobooks?: any;
-            episodes?: any;
-            playlists?: any;
-            shows?: any;
-            tracks?: any;
+            [key: string]: any;
         }
     }
 }

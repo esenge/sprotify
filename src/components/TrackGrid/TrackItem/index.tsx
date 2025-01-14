@@ -8,9 +8,11 @@ import { AppDispatch, RootState } from '../../../store';
 import { useState } from 'react';
 import LoginModal from '../../Login/LoginModal';
 import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor';
+import {Spotify} from '../../../types/spotify';
+import {I_SpotifyTrackItem} from '../../../types/other';
 
 interface I_TrackItem {
-    item: any;
+    item: I_SpotifyTrackItem;
 }
 
 const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
@@ -50,7 +52,7 @@ const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
                     <Box>
                         <IconButton
                             aria-label="add to favorites"
-                            color={iconButtonColor(item.isFavorite)}
+                            color={iconButtonColor(!!item.isFavorite)}
                             onClick={handleFavorite}
                         >
                             <Favorite sx={{height: 24, width: 24}} />
