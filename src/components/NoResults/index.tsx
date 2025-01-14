@@ -1,19 +1,10 @@
-import {Box, Grid2, Typography} from '@mui/material';
+import { Box, Grid2, Typography } from '@mui/material';
+import style from './NoResults.module.scss';
 
 const NoResults: React.FC = () => {
     return (
         <Grid2 size={12}>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '100%',
-                    textAlign: 'center',
-                    py: 4,
-                }}
-            >
+            <Box className={style.NoResults}>
                 <Typography variant="h6" color="textSecondary" gutterBottom>
                     No results found
                 </Typography>

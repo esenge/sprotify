@@ -1,0 +1,8 @@
+.SearchBarContainer {
+	display: flex;
+	gap: 8px;
+
+	.Button {
+		flex-shrink: 0;
+	}
+}

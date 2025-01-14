@@ -1,0 +1,25 @@
+.LoginModal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	background-color: white;
+	border: 1px solid black;
+	padding: 12px;
+
+	.Body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.BodyText {
+		margin-top: 24px;
+	}
+
+	.Button {
+		text-align: right;
+		margin-top: 24px;
+	}
+}

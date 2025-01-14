@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from '../../store';
 import { useEffect, useState} from 'react';
 import { fetchSavedItems} from '../../store/slices/favorites/asyncThunks';
 import LoginButton from '../../components/Login/LoginButton';
-import {Box, Grid2, Tab, Tabs, Typography} from '@mui/material';
+import { Box, Grid2, Tab, Tabs, Typography } from '@mui/material';
 import AlbumGrid from '../../components/AlbumGrid';
 import TrackGrid from '../../components/TrackGrid';
 
@@ -51,7 +51,7 @@ const FavoritesPage: React.FC = () => {
                     Your Favorite Items
                 </Typography>
             </Grid2>
-            <Box sx={{ width: '100%' }}>
+            <Box>
                 <Tabs
                     value={value}
                     onChange={handleChange}

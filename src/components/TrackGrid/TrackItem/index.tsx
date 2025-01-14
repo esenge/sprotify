@@ -8,8 +8,8 @@ import { AppDispatch, RootState } from '../../../store';
 import { useState } from 'react';
 import LoginModal from '../../Login/LoginModal';
 import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor';
-import {Spotify} from '../../../types/spotify';
-import {I_SpotifyTrackItem} from '../../../types/other';
+import { I_SpotifyTrackItem } from '../../../types/other';
+import style from './TrackItem.module.scss';
 
 interface I_TrackItem {
     item: I_SpotifyTrackItem;
@@ -35,7 +35,7 @@ const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
     return (
         <>
             <Card>
-                <CardContent sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <CardContent className={style.TrackItem}>
                     <Box>
                         <Typography component="div" variant="h6">
                             {item.name}
@@ -43,9 +43,8 @@ const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
                         <Typography
                             variant="subtitle1"
                             component="div"
-                            sx={{ color: 'text.secondary' }}
+                            color="textSecondary"
                         >
-                            {/*@ts-ignore*/}
                             {item?.artists?.map((item) => item.name).join(', ')}
                         </Typography>
                     </Box>

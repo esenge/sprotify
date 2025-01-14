@@ -3,6 +3,7 @@ import { InputAdornment, TextField, Button, Box } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { setQuery } from '../../store/slices/search/searchSlice';
+import style from './SearchBar.module.scss';
 
 const SearchBar: React.FC = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const SearchBar: React.FC = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Box className={style.SearchBarContainer}>
             <TextField
                 id="input-with-icon-textfield"
                 InputProps={{
@@ -43,7 +44,7 @@ const SearchBar: React.FC = () => {
                 variant="contained"
                 color="secondary"
                 onClick={handleSearchSubmit}
-                sx={{ flexShrink: 0 }}
+                className={style.Button}
             >
                 Search
             </Button>

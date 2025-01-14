@@ -1,4 +1,4 @@
-import {createSlice, isPending, isFulfilled, isRejected, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, isPending, isFulfilled, isRejected, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import {
     fetchFavoriteIds,

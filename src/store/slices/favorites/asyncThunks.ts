@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import spotifyAPI from '../../../API/spotifyAPI';
-import {I_Favorites, I_ModifyFavorite, I_SavedItems} from '../../../types/other';
+import { I_Favorites, I_ModifyFavorite, I_SavedItems } from '../../../types/other';
 
 export const fetchSavedItems = createAsyncThunk(
     'favorites/fetchSavedItems',

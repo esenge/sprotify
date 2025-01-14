@@ -1,6 +1,6 @@
 import { Box, Grid2 } from '@mui/material';
 import TrackItem from './TrackItem';
-import {Spotify} from '../../types/spotify';
+import { Spotify } from '../../types/spotify';
 
 interface I_TrackGrid {
     items: Array<Spotify.Track>;

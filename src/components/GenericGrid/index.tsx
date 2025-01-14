@@ -1,12 +1,12 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {AppDispatch, RootState} from '../../store';
-import {useEffect, useMemo} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
+import { useEffect, useMemo } from 'react';
 import arrayToCommaSeparatedString from '../../helpers/arrayToCommaSeparatedString/arrayToCommaSeparatedString';
-import {fetchFavoriteIds} from '../../store/slices/favorites/asyncThunks';
+import { fetchFavoriteIds } from '../../store/slices/favorites/asyncThunks';
 import TrackGrid from '../TrackGrid';
 import AlbumGrid from '../AlbumGrid';
-import {Spotify, SpotifySavedType} from '../../types/spotify';
-import {I_Favorites} from '../../store/slices/favorites/initialState';
+import { Spotify, SpotifySavedType } from '../../types/spotify';
+import { I_Favorites } from '../../store/slices/favorites/initialState';
 
 interface I_GenericGrid {
     items: Array<Spotify.Album> | Array<Spotify.Track>;

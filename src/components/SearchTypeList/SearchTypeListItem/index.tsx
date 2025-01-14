@@ -1,7 +1,7 @@
 import style from '../SearchTypeList.module.scss';
 import { Chip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import {AppDispatch, RootState} from '../../../store';
+import { AppDispatch, RootState } from '../../../store';
 import { SpotifySearchType } from '../../../types/spotify';
 import { setSearchType } from '../../../store/slices/search/searchSlice';
 

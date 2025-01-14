@@ -1,4 +1,4 @@
-import {I_SpotifyAlbumItem, I_SpotifyTrackItem} from '../../../types/other';
+import { I_SpotifyAlbumItem, I_SpotifyTrackItem } from '../../../types/other';
 
 interface I_FavoriteAlbum {
     album: I_SpotifyAlbumItem,

@@ -1,17 +1,10 @@
 import { Box, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import style from './NotFound.module.scss';
 
 const NotFound: React.FC = () => {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-            }}
-        >
+        <Box className={style.NotFoundContainer}>
             <img
                 src="/assets/images/404.webp"
                 alt="404 - Page Not Found"
@@ -20,7 +13,7 @@ const NotFound: React.FC = () => {
             <Typography variant="h4" gutterBottom>
                 Oops! Page Not Found
             </Typography>
-            <Typography variant="body1" color="textSecondary" sx={{ marginBottom: 3 }}>
+            <Typography variant="body1" color="textSecondary" gutterBottom>
                 The page you’re looking for doesn’t exist or has been moved.
             </Typography>
             <Button
@@ -29,11 +22,6 @@ const NotFound: React.FC = () => {
                 size="large"
                 component={Link}
                 to="/"
-                sx={{
-                    textTransform: 'none',
-                    fontWeight: 'bold',
-                    paddingX: 4,
-                }}
             >
                 Go Back to Home
             </Button>

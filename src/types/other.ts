@@ -1,4 +1,4 @@
-import {Spotify, SpotifySavedType} from './spotify';
+import { Spotify, SpotifySavedType } from './spotify';
 
 export const MAX_LIMIT = 10;
 

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import { fetchSearchResults } from './asyncThunks';
-import {SpotifySearchType} from '../../../types/spotify';
+import { SpotifySearchType } from '../../../types/spotify';
 
 const searchSlice = createSlice({
     name: 'search',

@@ -1,23 +1,11 @@
-import {Box, Button, Modal, Typography} from '@mui/material';
-import {LOGIN_URL} from '../../../API/authConfig';
-import {useState} from 'react';
-import {Close} from '@mui/icons-material';
+import { Box, Modal, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Close } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import LoginButton from '../LoginButton';
+import style from './LoginModal.module.scss';
 
 const LoginModal: React.FC = () => {
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-    };
-
     const [modalVisible, setModalVisible] = useState<boolean>(true);
 
     const handleClose = () => {
@@ -32,8 +20,8 @@ const LoginModal: React.FC = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box className={style.LoginModal}>
+                    <Box className={style.Body}>
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Action Required
                         </Typography>
@@ -42,11 +30,11 @@ const LoginModal: React.FC = () => {
                         </IconButton>
                     </Box>
 
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <Typography id="modal-modal-description">
                         You should be logged in to add favorites
                     </Typography>
 
-                    <Box sx={{ textAlign: 'right', mt: 3 }}>
+                    <Box className={style.Button}>
                         <LoginButton />
                     </Box>
                 </Box>

@@ -1,4 +1,4 @@
-import { Spotify, SpotifySearchType} from '../../../types/spotify';
+import { Spotify, SpotifySearchType } from '../../../types/spotify';
 
 export interface I_SearchTypeState {
     searchType: SpotifySearchType;

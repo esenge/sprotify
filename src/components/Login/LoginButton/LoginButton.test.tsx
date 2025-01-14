@@ -1,6 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import LoginButton from '.';
-import { LOGIN_URL } from '../../../API/authConfig';
 
 // Mock the module that contains LOGIN_URL
 jest.mock('../../../API/authConfig', () => ({
