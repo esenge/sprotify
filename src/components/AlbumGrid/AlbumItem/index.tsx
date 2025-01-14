@@ -43,7 +43,6 @@ const AlbumItem: React.FC<I_AlbumItem> = ({
                 />
                 <ImageListItemBar
                     title={item.name}
-                    subtitle={<span>by: {item.release_date}</span>}
                     position="below"
                     actionIcon={
                         <IconButton
