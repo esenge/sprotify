@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# Šprotify APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Šprotify is a web app that uses Spotify Web API.
+This app search for tracks and albums, manage your favorites.
 
-Currently, two official plugins are available:
+Site is available at: https://sprotify.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **Frontend**: React, Redux, Material-UI
+- **Backend**: Spotify Web API
+- **State Management**: Redux Toolkit
+- **Authentication**: OAuth 2.0 with Spotify
+- **Other Tools**: Jest for testing, React Testing Library
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js (v18.20.5) and npm (10.8.2) installed on your machine. 
+- A Spotify Developer account with an app set up in the
+[Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Installation
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/esenge/sprotify.git
+   cd sprotify
+   ```
+2. **Install dependencies**:
+    ```bash
+   npm install
+   ```
+3. **Create a .env file with your Spotify credentials**:
+    ```js
+   VITE_CLIENT_ID=your-client-id
+   VITE_CLIENT_SECRET=your-client-secret
+   VITE_URI_REDIRECT=your-redirect-uri
+   ```
+4. **Start the development server**:
+    ```bash
+   npm install
+   ```
+5. **Open the app in your browser**:
+   [http://localhost:5173/](http://localhost:5173/)
