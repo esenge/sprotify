@@ -38,7 +38,7 @@ Site is available at: https://sprotify.netlify.app/
    ```
 4. **Start the development server**:
     ```bash
-   npm install
+   npm run dev
    ```
 5. **Open the app in your browser**:
    [http://localhost:5173/](http://localhost:5173/)
