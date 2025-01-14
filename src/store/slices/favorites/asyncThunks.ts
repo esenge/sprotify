@@ -7,7 +7,6 @@ export const fetchSavedItems = createAsyncThunk(
     async (params: I_SavedItems, { rejectWithValue }) => {
         try {
             const response = await spotifyAPI.savedItems(params);
-            console.log("response", response);
             return { data: response, type: params.type };
         } catch (error: any) {
         }

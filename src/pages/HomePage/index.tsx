@@ -26,7 +26,9 @@ const HomePage: React.FC = () => {
                 </Typography>
             </Grid2>
             <Grid2 container size={12} spacing={3} justifyContent="center">
-                <SearchBar />
+                <Grid2 size={12}>
+                    <SearchBar />
+                </Grid2>
                 <SearchTypeList />
                 <SearchResultsGrid />
             </Grid2>
