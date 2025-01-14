@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import SearchTypeList from './index.tsx';
+import SearchTypeList from '.';
 
-jest.mock('./index.tsx', () => () => (
+jest.mock('.', () => () => (
     <div data-testid="search-type-list">results</div>
 ));
 

@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material';
 import { ALL_SPOTIFY_SEARCH_TYPES } from '../../constants';
 import SearchTypeListItem from './SearchTypeListItem';
-import {SpotifySearchType} from '../../types/spotify.ts';
+import { SpotifySearchType } from '../../types/spotify';
 
 const SearchTypeList: React.FC = () => {
     return (

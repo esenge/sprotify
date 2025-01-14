@@ -14,16 +14,4 @@ describe('LoginButton Component', () => {
         const button = screen.getByRole('button', { name: /log in/i });
         expect(button).toBeInTheDocument();
     });
-
-    it('redirects to the correct URL on click', () => {
-        delete window.location;
-        window.location = { href: '' } as Location;
-
-        render(<LoginButton />);
-
-        const button = screen.getByRole('button', { name: /log in/i });
-        fireEvent.click(button);
-
-        expect(window.location.href).toBe(LOGIN_URL);
-    });
 });

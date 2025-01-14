@@ -1,15 +1,18 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "esModuleInterop": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true,
     "moduleResolution": "node",
-    "module": "esnext",
-    "target": "esnext"
+    "isolatedModules": true
   },
-  "include": ["jest-setup.ts", "**/*.test.ts", "**/*.test.tsx", "src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

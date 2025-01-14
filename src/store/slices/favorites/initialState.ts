@@ -1,6 +1,4 @@
-interface I_FavoritesState {
-    albums: any[];
-    artists: any[];
+export interface I_FavoritesState {
     loading: boolean;
     error: string | null;
     loginModalVisible: boolean;
@@ -9,8 +7,6 @@ interface I_FavoritesState {
 }
 
 export const initialState: I_FavoritesState = {
-    albums: [],
-    artists: [],
     loading: false,
     error: null,
     loginModalVisible: false,

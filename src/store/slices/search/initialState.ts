@@ -1,6 +1,6 @@
 import { SpotifySearchType } from '../../../types/spotify';
 
-interface I_SearchTypeState {
+export interface I_SearchTypeState {
     searchType: SpotifySearchType;
     query: string,
     results: any,

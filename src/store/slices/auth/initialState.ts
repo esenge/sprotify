@@ -1,4 +1,4 @@
-interface I_AuthState {
+export interface I_AuthState {
     accessToken: string | null;
     expiresAt: number | null;
 }

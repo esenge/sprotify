@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { LOGIN_URL } from '../../../API/authConfig.ts';
+import { LOGIN_URL } from '../../../API/authConfig';
 
 const LoginButton: React.FC = () => {
     const handleLogin = () => {

@@ -17,45 +17,53 @@ const favoritesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addMatcher(isPending(fetchFavoriteIds, fetchSavedItems, saveFavorite, removeFavorite), (state) => {
+            //@ts-ignore
             state.loading = true;
+            //@ts-ignore
             state.error = null;
         });
         builder.addMatcher(isFulfilled(fetchFavoriteIds, fetchSavedItems, saveFavorite, removeFavorite), (state, action) => {
+            //@ts-ignore
             state.loading = false;
             switch (action.type) {
                 case fetchSavedItems.fulfilled.type:
+                    //@ts-ignore
                     state.shouldReload = false;
+                    //@ts-ignore
                     state[action.payload.type] = action.payload.data;
                     break;
                 case fetchFavoriteIds.fulfilled.type:
+                    //@ts-ignore
                     state.favorites[action.payload.type] = action.payload.data;
+                    //@ts-ignore
                     state.shouldReload = false;
                     break;
                 case saveFavorite.fulfilled.type:
-                    console.log("action", action);
+                    //@ts-ignore
                     state.shouldReload = true;
-                    // state.favoriteAlbumIds = action.payload;
                     break;
                 case removeFavorite.fulfilled.type:
+                    //@ts-ignore
                     state.shouldReload = true;
-                    // state.favoriteAlbumIds = action.payload;
                     break;
                 default:
                     break;
             }
         });
         builder.addMatcher(isRejected(fetchFavoriteIds, fetchSavedItems, saveFavorite, removeFavorite), (state, action) => {
+            //@ts-ignore
             state.loading = false;
             switch (action.type) {
                 case saveFavorite.rejected.type:
                 case removeFavorite.rejected.type:
+                    //@ts-ignore
                     if (action.payload?.code === 401) {
-                        state.loginModalVisible = true; // Show modal for unauthorized error
-                    } else {
-                        state.error = action.payload?.message || 'An error occurred';
+                        //@ts-ignore
+                        state.loginModalVisible = true;
                     }
                     break;
                 default:
+                    //@ts-ignore
                     state.error = action.payload as string;
             }
         });

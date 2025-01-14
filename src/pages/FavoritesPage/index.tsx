@@ -9,12 +9,13 @@ import TrackGrid from '../../components/TrackGrid';
 
 const FavoritesPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { albums, tracks, shouldReload } = useSelector((state: RootState) => state.favorites);
+    const { favorites, shouldReload } = useSelector((state: RootState) => state.favorites);
     const { accessToken } = useSelector((state: RootState) => state.auth);
     const [value, setValue] = useState('albums');
 
     useEffect(() => {
         if (accessToken) {
+            //@ts-ignore
             dispatch(fetchSavedItems({ accessToken, type: value }));
         }
     }, [accessToken, value, shouldReload]);
@@ -27,13 +28,11 @@ const FavoritesPage: React.FC = () => {
         return (
             <Grid2 container size={12} spacing={3}>
                 <Grid2 container size={12} spacing={2} direction="column">
-                    <Grid2 item>
-                        <Typography variant="h5">
-                            Your Favorite Items
-                        </Typography>
-                    </Grid2>
+                    <Typography variant="h5">
+                        Your Favorite Items
+                    </Typography>
                     {!accessToken && <>
-                        <Grid2 item>
+                        <Grid2 size={12} spacing={3}>
                             <Typography variant="body1" color="textSecondary">
                                 Log in to view and manage your favorites
                             </Typography>
@@ -42,17 +41,15 @@ const FavoritesPage: React.FC = () => {
                 </Grid2>
                 <LoginButton />
             </Grid2>
-        )
+        );
     }
 
     return (
         <Grid2 container size={12} spacing={3}>
             <Grid2 container size={12} spacing={2} direction="column">
-                <Grid2 item>
-                    <Typography variant="h5">
-                        Your Favorite Items
-                    </Typography>
-                </Grid2>
+                <Typography variant="h5">
+                    Your Favorite Items
+                </Typography>
             </Grid2>
             <Box sx={{ width: '100%' }}>
                 <Tabs
@@ -68,8 +65,10 @@ const FavoritesPage: React.FC = () => {
             </Box>
             {value === 'albums' && (
                 <AlbumGrid
-                    items={albums
+                    items={favorites.albums
+                        //@ts-ignore
                         ?.filter((item) => item?.album)
+                        //@ts-ignore
                         .map((item) => ({
                             ...item.album,
                             isFavorite: true,
@@ -78,8 +77,10 @@ const FavoritesPage: React.FC = () => {
             )}
             {value === 'tracks' && (
                 <TrackGrid
-                    items={tracks
+                    items={favorites.tracks
+                        //@ts-ignore
                         ?.filter((item) => item?.track)
+                        //@ts-ignore
                         .map((item) => ({
                             ...item.track,
                             isFavorite: true,

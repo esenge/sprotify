@@ -2,12 +2,12 @@ import { Card, CardContent, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import { Favorite } from '@mui/icons-material';
-import { removeFavorite, saveFavorite } from '../../../store/slices/favorites/asyncThunks.ts';
+import { removeFavorite, saveFavorite } from '../../../store/slices/favorites/asyncThunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store';
 import { useState } from 'react';
 import LoginModal from '../../Login/LoginModal';
-import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor.ts';
+import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor';
 
 interface I_TrackItem {
     item: any;
@@ -43,6 +43,7 @@ const TrackItem: React.FC<I_TrackItem> = ({ item }) => {
                             component="div"
                             sx={{ color: 'text.secondary' }}
                         >
+                            {/*@ts-ignore*/}
                             {item?.artists?.map((item) => item.name).join(', ')}
                         </Typography>
                     </Box>

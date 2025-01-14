@@ -6,7 +6,7 @@ import {removeFavorite, saveFavorite} from '../../../store/slices/favorites/asyn
 import {AppDispatch, RootState} from '../../../store';
 import { useState} from 'react';
 import LoginModal from '../../Login/LoginModal';
-import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor.ts';
+import iconButtonColor from '../../../helpers/iconButtonColor/iconButtonColor';
 
 interface I_AlbumItem {
     item: any;

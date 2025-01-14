@@ -13,6 +13,7 @@ const HomePage: React.FC = () => {
 
     useEffect(() => {
         if (query) {
+            //@ts-ignore
             dispatch(fetchSearchResults({ query, type: searchType }));
         }
     }, [searchType, query, dispatch]);

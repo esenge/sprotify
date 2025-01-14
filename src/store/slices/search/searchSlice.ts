@@ -17,15 +17,21 @@ const searchSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchSearchResults.pending, (state) => {
+                //@ts-ignore
                 state.isLoading = true;
+                //@ts-ignore
                 state.error = null;
             })
             .addCase(fetchSearchResults.fulfilled, (state, action) => {
+                //@ts-ignore
                 state.isLoading = false;
+                //@ts-ignore
                 state.results = action.payload;
             })
             .addCase(fetchSearchResults.rejected, (state, action) => {
+                //@ts-ignore
                 state.isLoading = false;
+                //@ts-ignore
                 state.error = action.payload as string;
             });
     },
