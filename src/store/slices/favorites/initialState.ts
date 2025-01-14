@@ -4,6 +4,8 @@ export interface I_FavoritesState {
     loginModalVisible: boolean;
     favorites: any;
     shouldReload: boolean;
+    albums: any[];
+    tracks: any[];
 }
 
 export const initialState: I_FavoritesState = {
@@ -15,4 +17,6 @@ export const initialState: I_FavoritesState = {
         tracks: [],
     },
     shouldReload: false,
+    albums: [],
+    tracks: [],
 };

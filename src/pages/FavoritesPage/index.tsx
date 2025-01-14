@@ -9,7 +9,7 @@ import TrackGrid from '../../components/TrackGrid';
 
 const FavoritesPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { favorites, shouldReload } = useSelector((state: RootState) => state.favorites);
+    const { albums, tracks, shouldReload } = useSelector((state: RootState) => state.favorites);
     const { accessToken } = useSelector((state: RootState) => state.auth);
     const [value, setValue] = useState('albums');
 
@@ -65,7 +65,7 @@ const FavoritesPage: React.FC = () => {
             </Box>
             {value === 'albums' && (
                 <AlbumGrid
-                    items={favorites.albums
+                    items={albums
                         //@ts-ignore
                         ?.filter((item) => item?.album)
                         //@ts-ignore
@@ -77,7 +77,7 @@ const FavoritesPage: React.FC = () => {
             )}
             {value === 'tracks' && (
                 <TrackGrid
-                    items={favorites.tracks
+                    items={tracks
                         //@ts-ignore
                         ?.filter((item) => item?.track)
                         //@ts-ignore
