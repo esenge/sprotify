@@ -19,7 +19,7 @@ Site is available at: https://sprotify.netlify.app/
 - Node.js (v18.20.5) and npm (10.8.2) installed on your machine. 
 - A Spotify Developer account with an app set up in the
 [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
-- A Spotify account to be able to manage favorites.
+- A Spotify account which are related with Spotify Developer Account to be able to manage favorites.
 
 ### Installation
 1. **Clone the repository**:
